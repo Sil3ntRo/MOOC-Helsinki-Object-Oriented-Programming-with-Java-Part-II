@@ -3,13 +3,20 @@ package validation;
 public class Calculator {
 
     public int multiplication(int fromInteger) {
-
-        int multiplication = 1;
-        for (int i = 1; i <= fromInteger; i++) {
-            multiplication *= i;
+        
+        if(fromInteger >= 0) {
+            int multiplication = 1;
+            for (int i = 1; i <= fromInteger; i++) {
+                multiplication *= i;
+            }
+            return multiplication;
         }
+        else {
+            throw new IllegalArgumentException();
+        }
+        
 
-        return multiplication;
+        
     }
 
     public int binomialCoefficient(int setSize, int subsetSize) {
