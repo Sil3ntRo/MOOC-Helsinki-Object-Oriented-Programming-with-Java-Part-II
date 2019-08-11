@@ -11,8 +11,29 @@ public class NoticeBoard implements Runnable {
 
     @Override
     public void run() {
+        frame = new JFrame("Notice Board");
+        frame.setPreferredSize(new Dimension(500, 300));
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        
+        createComponents(frame.getContentPane());
+        
+        frame.pack();
+        frame.setVisible(true);
     }
 
     private void createComponents(Container container) {
+        GridLayout layout = new GridLayout(3, 1);
+        container.setLayout(layout);
+        
+        JTextField textTop = new JTextField("The message on notice board");
+        JButton copyButton = new JButton("Copy!");
+        JLabel labelButton = new JLabel();
+        
+        ActionEventListener listener = new ActionEventListener(textTop, labelButton);
+        copyButton.addActionListener(listener);
+        
+        container.add(textTop);
+        container.add(copyButton);
+        container.add(labelButton);
     }
 }
